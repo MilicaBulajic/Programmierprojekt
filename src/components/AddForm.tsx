@@ -38,7 +38,7 @@ const AddForm: FC = () => {
             className='deviceType'
             name='deviceType'
             value={device.deviceType}
-            type='array'
+            type='text'
             onChange = {handleOnChange}
             />
         </div>
