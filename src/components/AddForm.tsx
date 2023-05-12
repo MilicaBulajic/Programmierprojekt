@@ -1,6 +1,11 @@
 import { FC, useState } from 'react';
+import { Action } from '../reducer/devicesReducer';
 
-const AddForm: FC = () => {
+interface AddFormProps {
+  dispatch: React.Dispatch<Action>;
+}
+
+const AddForm: FC<AddFormProps> = ({ dispatch }) => {
   const [device, setDevice] = useState({
     deviceName: '',
     deviceType: '',
@@ -16,10 +21,16 @@ const AddForm: FC = () => {
       };
     });
   };
-  const handleOnSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
-      event.preventDefault();
-        console.log(device);
-  };
+const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  dispatch({
+    type: 'ADD_DEVICE',
+    payload: {
+    id: Date.now(), 
+    ...device
+  }
+  });
+};
   return (
       <form onSubmit={handleOnSubmit} className='contact-form'>
         <div>
