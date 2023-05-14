@@ -3,7 +3,7 @@ export interface Device {
     deviceName: string;
     deviceType: string;
     ownerName: string;
-    batteryStatus: number;
+    batteryStatus: string;
 }
 export interface Update {
   id: number;
