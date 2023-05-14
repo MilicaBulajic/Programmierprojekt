@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Device } from '../reducer/devicesReducer';
+import DeviceProduct from './DeviceProduct';
 
 interface DeviceListProps {
   devices: Device[];
@@ -20,12 +21,13 @@ const DeviceList: FC<DeviceListProps> = ({ devices }) => {
           </thead>
           <tbody>
             {devices.map(({ id, deviceName, deviceType, ownerName, batteryStatus }) => (
-                <tr key={id}>
-                <td>{deviceName}</td>
-                <td>{deviceType}</td>
-                <td>{ownerName}</td>
-                <td>{batteryStatus}</td>
-              </tr>
+              <DeviceProduct
+                key={id}
+                deviceName={deviceName}
+                deviceType={deviceType}
+                ownerName={ownerName}
+                batteryStatus={batteryStatus}
+              />
             ))}
           </tbody>
         </table>
